@@ -1,0 +1,109 @@
+/* Custom Stylesheet */
+/**
+ * Use this file to override Materialize files so you can update
+ * the core Materialize files in the future
+ *
+ * Made By MaterializeCSS.com
+ */
+
+nav ul a,
+nav .brand-logo {
+    color: #444;
+}
+
+p {
+    line-height: 2rem;
+}
+
+.sidenav-trigger {
+    color: #26a69a;
+}
+
+.parallax-container {
+    min-height: 380px;
+    line-height: 0;
+    height: auto;
+    color: rgba(255,255,255,.9);
+}
+.parallax-container .section {
+    width: 100%;
+}
+
+@media only screen and (max-width : 992px) {
+    .parallax-container .section {
+        position: absolute;
+        top: 40%;
+    }
+    #index-banner .section {
+        top: 10%;
+    }
+}
+
+@media only screen and (max-width : 600px) {
+    #index-banner .section {
+        top: 0;
+    }
+}
+
+.icon-block {
+    padding: 0 15px;
+}
+
+footer.page-footer {
+    margin: 0;
+}
+
+footer.page-footer .footer-links{
+    line-height: 2rem;
+}
+
+
+
+
+/**/
+.parallax-container.hero-banner {
+    min-height: 480px;
+}
+.participe .card-content,
+.parallax-container.hero-banner .card-content{
+    padding-bottom: 0!important;
+}
+
+.carousel .carousel-item{
+    width: 300px;
+    height: 300px;
+}
+.carousel .carousel-item .card-action .row{
+    margin-bottom: 0!important;
+}
+.carousel .carousel-item .card-action i{
+    font-size: 2rem;
+}
+.carousel .carousel-item .card-action i,
+.carousel .carousel-item .card-action b{
+    vertical-align: middle;
+}
+.carousel .carousel-item .progress{
+    height: 10px;
+}
+.carousel .indicators .indicator-item{
+    background-color: rgba(0,150,136,.5);
+}
+.carousel .indicators .indicator-item.active{
+    background-color: #009688;
+}
+.progress-section .progress{
+    height: 30px;
+    margin-top: 0!important;
+}
+.progress-section .progress span{
+    color: white;
+    line-height: 28px;
+    padding-left: 20px;
+}
+
+@media only screen and (max-width: 992px) {
+    body .card .card-content .btn-large{
+        margin-bottom: 20px;
+    }
+}

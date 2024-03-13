@@ -1,0 +1,126 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Index{% endblock %}
+
+{% block body %}
+<div class="parallax-container valign-wrapper">
+        <div class="section no-pad-bot">
+            <div class="container">
+                <h1 class="header center white-text light">{{ campaign.title }}</h1>
+                <div class="row center">
+                    <h5 class="header col s12 light">- Organisée par : {{ campaign.name }} -</h5>
+                </div>
+            </div>
+        </div>
+        <div class="parallax"><img src="{{ asset('images/8.jpg') }}" alt="Titre de la campagne"></div>
+    </div>
+
+    <!-- Show progress -->
+    <section class="progress-section">
+        <div class="progress">
+            <div class="determinate" style="width: {{ percentCampaign }}%"><span>{{ percentCampaign }} %</span></div>
+        </div>
+    </section>
+
+    <div class="container participe">
+        <div class="section">
+            <!-- Participation section -->
+            <div class="row">
+                <div class="card col s12 m12 l8 offset-l2">
+                    <div class="card-content">
+                        <div class="input-field col s12 l6">
+                            <input id="mount" type="number" class="validate">
+                            <label for="mount">Votre participation</label>
+                        </div>
+                        <a href="create.html" class="btn-large waves-effect waves-light pink lighten-1 col s12 l6">Participer</a>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12 center">
+                    <h4>A propos de la campagne</h4>
+                </div>
+            </div>
+            <!--   Icon Section   -->
+            <div class="row">
+                <div class="col s12 m6 l3 offset-l3">
+                    <div class="icon-block center">
+                        <div class="btn-large btn-floating white"><i class="material-icons teal-text">person</i></div>
+                        <h3 class="center">12</h3>
+                        <p class="light">Participants</p>
+                    </div>
+                </div>
+
+                <div class="col s12 m6 l3">
+                    <div class="icon-block center">
+                        <div class="btn-large btn-floating white"><i class="material-icons teal-text">redeem</i></div>
+                        <h3 class="center">220</h3>
+                        <p class="light">euros récoltés</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Form section -->
+            <div class="row">
+                <form>
+                    <div class="input-field col s12">
+                        <label for="description">Description</label>
+                        <textarea id="description" class="materialize-textarea" readonly="readonly">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque id nunc nec volutpat. Etiam pellentesque tristique arcu, non consequat magna fermentum ac. Cras ut ultricies eros. Maecenas eros justo.</textarea>
+                    </div>
+                    <div class="input-field col s12 l6">
+                        <input id="goal" type="number" readonly="readonly" value="500">
+                        <label for="goal">Objectif</label>
+                    </div>
+                    <div class="col s12 l6 offset-l3">
+                        <button class="btn btn-large waves-effect waves-light col s12" type="submit" name="action">
+                            Modifiez la campagne
+                            <i class="material-icons right">edit</i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <!-- List -->
+            <div class="row">
+                <div class="col s12 center">
+                    <h4>Liste des participants</h4>
+                </div>
+                <div class="col s12">
+                    <table class="highlight responsive-table">
+                        <thead>
+                        <tr>
+                            <th>Email</th>
+                            <th>Participation</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        <tr>
+                            <td>Alvin@live.net</td>
+                            <td>5€</td>
+                        </tr>
+                        <tr>
+                            <td>Alan@live.net</td>
+                            <td>12€</td>
+                        </tr>
+                        <tr>
+                            <td>Jonathan@live.net</td>
+                            <td>7€</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="parallax-container valign-wrapper">
+        <div class="section no-pad-bot">
+            <div class="container">
+                <div class="row center">
+                    <h4 class="header col s12 light">Une campagne pensée pour vous<br>et pour toutes les occasions</h4>
+                </div>
+            </div>
+        </div>
+        <div class="parallax"><img src="{{ asset('images/10.jpg') }}" alt="Une campagne pensée pour vous"></div>
+    </div>
+{% endblock %}
