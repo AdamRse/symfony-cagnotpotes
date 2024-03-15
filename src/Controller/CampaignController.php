@@ -4,7 +4,9 @@ namespace App\Controller;
 
 use App\Entity\Campaign;
 use App\Entity\Participant;
+use App\Entity\Payment;
 use App\Form\CampaignType;
+use App\Form\PaymentType;
 use App\Repository\CampaignRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -35,9 +37,9 @@ class CampaignController extends AbstractController
             $entityManager->persist($campaign);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_campaign_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_campaign_show', ["id" => $campaign->getId()], Response::HTTP_SEE_OTHER);
         }
-
+        //dd($form);
         return $this->render('campaign/new.html.twig', [
             'campaign' => $campaign,
             'form' => $form,
@@ -47,7 +49,8 @@ class CampaignController extends AbstractController
     #[Route('/{id}', name: 'app_campaign_show', methods: ['GET'])]
     public function show(Campaign $campaign): Response
     {
-        $particiants =$campaign->getParticipants()->getValues();
+        $particiants = $campaign->getParticipants()->getValues();
+        $nbParticipants = sizeof($particiants);
         $totalFounding = 0;
         foreach($particiants as $participant){
             if(!empty($participant->getPayments()->getValues()[0]))
@@ -57,7 +60,29 @@ class CampaignController extends AbstractController
 
         return $this->render('campaign/show.html.twig', [
             'campaign' => $campaign,
-            'percentCampaign' => round($percentCampaign, 2)
+            'participants' => $particiants,
+            'percentCampaign' => round($percentCampaign),
+            'nbParticipants' => $nbParticipants,
+            'totalFounding' => $totalFounding
+        ]);
+    }
+    
+    #[Route('/{id}/payment', name: 'app_campaign_payment', methods: ['GET'])]
+    public function showPayment(Request $request, Campaign $campaign): Response
+    {
+        $particiants = $campaign->getParticipants()->getValues();
+        $payment = new Payment();
+        $form = $this->createForm(PaymentType::class, $payment);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $form->handleRequest($request);
+            return $this->redirectToRoute('app_campaign_index', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->render('payment/new.html.twig', [
+            'campaign' => $campaign,
+            'form' => $form,
+            'participants' => $particiants
         ]);
     }
 

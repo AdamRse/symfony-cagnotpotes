@@ -1,9 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Index{% endblock %}
+{% block title %}New Campaign{% endblock %}
 
 {% block body %}
-<div class="parallax-container valign-wrapper">
+    </div>
+
+    <div class="parallax-container valign-wrapper">
         <div class="section no-pad-bot">
             <div class="container">
                 <h1 class="header center white-text light">{{ campaign.title }}</h1>
@@ -18,7 +20,7 @@
     <!-- Show progress -->
     <section class="progress-section">
         <div class="progress">
-            <div class="determinate" style="width: {{ percentCampaign }}%"><span>{{ percentCampaign }} %</span></div>
+            <div class="determinate" style="width: {{ percentCampaign }}%"><span>{{ percentCampaign }}% de l'objectif</span></div>
         </div>
     </section>
 
@@ -47,7 +49,7 @@
                 <div class="col s12 m6 l3 offset-l3">
                     <div class="icon-block center">
                         <div class="btn-large btn-floating white"><i class="material-icons teal-text">person</i></div>
-                        <h3 class="center">12</h3>
+                        <h3 class="center">{{ nbParticipants }}</h3>
                         <p class="light">Participants</p>
                     </div>
                 </div>
@@ -55,7 +57,7 @@
                 <div class="col s12 m6 l3">
                     <div class="icon-block center">
                         <div class="btn-large btn-floating white"><i class="material-icons teal-text">redeem</i></div>
-                        <h3 class="center">220</h3>
+                        <h3 class="center">{{ totalFounding }}</h3>
                         <p class="light">euros récoltés</p>
                     </div>
                 </div>
@@ -80,6 +82,7 @@
                 </form>
             </div>
             <!-- List -->
+            {% if participants != false %}
             <div class="row">
                 <div class="col s12 center">
                     <h4>Liste des participants</h4>
@@ -92,24 +95,15 @@
                             <th>Participation</th>
                         </tr>
                         </thead>
-
                         <tbody>
-                        <tr>
-                            <td>Alvin@live.net</td>
-                            <td>5€</td>
-                        </tr>
-                        <tr>
-                            <td>Alan@live.net</td>
-                            <td>12€</td>
-                        </tr>
-                        <tr>
-                            <td>Jonathan@live.net</td>
-                            <td>7€</td>
-                        </tr>
+                        {% for participant in participants %}
+                                <tr><td>{{ participant.email }}</td><td>{{ participant.getPayments().first().amount }}€</td></tr>
+                        {% endfor %}
                         </tbody>
                     </table>
                 </div>
             </div>
+            {% endif %}
         </div>
     </div>
 
@@ -124,3 +118,4 @@
         <div class="parallax"><img src="{{ asset('images/10.jpg') }}" alt="Une campagne pensée pour vous"></div>
     </div>
 {% endblock %}
+

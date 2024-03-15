@@ -13,16 +13,16 @@ class CampaignType extends AbstractType
     {
         $builder
             ->add('title', null, [
-                'attr' => ['class' => 'form-control']
+                'attr' => ['class' => 'validate']
             ])
             ->add('content', null, [
-                'attr' => ['class' => 'form-control']
+                'attr' => ['class' => 'validate']
             ])
             ->add('goal', null, [
-                'attr' => ['class' => 'form-control']
+                'attr' => ['class' => 'validate']
             ])
             ->add('name', null, [
-                'attr' => ['class' => 'form-control']
+                'attr' => ['class' => 'validate']
             ])
         ;
     }
